@@ -20,8 +20,8 @@ form.addEventListener('submit', (event) =>{
     let round = event.path[0][1].value;
     let querySeason = document.querySelector('#season');
     let queryRound = document.querySelector('#round');
+    
     //add listener to table
-    const drivers = await apiFetch(season, round)
     for(let i = 0; i<7; i++){
         let given_name = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName);
         let family_name = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName);
@@ -29,6 +29,7 @@ form.addEventListener('submit', (event) =>{
         let nationality = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.nationality);
         let sponsor = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Constructors[0].name);
         let points = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points);
+        
         //inputting variables into table
         document.querySelector("name" + String(i+1)).innerHTML = `${given_name}`
         document.querySelector("name" + String(i+1)).innerHTML = `${family_name}`
@@ -36,5 +37,5 @@ form.addEventListener('submit', (event) =>{
         document.querySelector("sponsor" + String(i+1)).innerHTML = `${sponsor}`
         document.querySelector("points" + String(i+1)).innerHTML = `${points}`
     }
-};
+});
 
