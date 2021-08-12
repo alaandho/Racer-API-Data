@@ -1,15 +1,15 @@
 //Get f1 Racer Data
 const getData = async () => {
-    let season = document.querySelector('.season')
-    let round = document.querySelector('.round')
-    let response = await axios.get(`http://ergast.com/api/f1/${season}/${round}/driverStandings`)
+    let season = document.querySelector('.season');
+    let round = document.querySelector('.round');
+    let response = await axios.get(`http://ergast.com/api/f1/${season}/${round}/driverStandings`);
     return response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings
 };
 
 
 const Ergast_element = {
     driverRows: '.driver-list'
-}
+};
 
 
 
@@ -25,7 +25,7 @@ form.addEventListener('submit', (event) =>{
     for(let i = 0; i<7; i++){
         let given_name = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.givenName);
         let family_name = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.familyName);
-        let name = given_name + " " + family_name;
+        let name = (`${given_name} ${family_name}`);
         let nationality = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Driver.nationality);
         let sponsor = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].Constructors[0].name);
         let points = (drivers.MRData.StandingsTable.StandingsLists[0].DriverStandings[i].points);
